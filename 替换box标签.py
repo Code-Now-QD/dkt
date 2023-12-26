@@ -1,5 +1,5 @@
 """
-用于更改特定box的标签
+用于替换特定box的标签
 labels记录了box的标签
 """
 import os
