@@ -6,6 +6,6 @@
 
 以下待开发：
 检测小目标.py     -- 找到具有最小边界框的box
-object_detection.py
+检测重合.py
 
 以下待修改：
