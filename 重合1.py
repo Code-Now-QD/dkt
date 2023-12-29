@@ -9,8 +9,6 @@ def calculate_overlap(rect1, rect2):
     :param rect2: 对比形状的顶点坐标
     :return: 返回重叠面积
     """
-    print(rect1)
-    print(rect2)
     # 计算重叠部分的坐标
     x1 = max(p1[0], r1[0])
     y1 = max(p1[1], r1[1])
