@@ -72,6 +72,4 @@ for item in sorted(os.listdir(json_in)):
 
             total_overlap += overlap_area  # 累加重叠面积的总和
             if overlap_area > 0.5:  # 判断重叠程度，例如大于0.5则认为重合
-                print(item)
-                print(f"Shape {i + 1} and Shape {j + 1} overlap area: {overlap_area}")
-                print("Shape", i + 1, "and Shape", j + 1, "are overlapping!")
+                print(f"{item}：    形状 {i + 1} 和 形状 {j + 1} 的重叠面积为: {overlap_area:.2f}")
