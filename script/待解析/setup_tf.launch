@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="roll" default="0.0"/>
+  <arg name="frame_id" default="base_link"/>
+  <arg name="child_frame_id" default="hesai210"/>
+  <arg name="period_in_ms" default="10"/>
+
+     <node pkg="tf" type="static_transform_publisher" name="base_link_to_localizer" args="$(arg x) $(arg y) $(arg z) $(arg yaw) $(arg pitch) $(arg roll) $(arg frame_id) $(arg child_frame_id) $(arg period_in_ms)"/>
+
+<node pkg="tf" type="static_transform_publisher" name="base_link_to_localizer2" args=" 1.83159  0.187761 -0.787587  0.0238853  0.0280951 -0.0205694 /hesai210 /hesai211 10"/>
+
+<node pkg="tf" type="static_transform_publisher" name="base_link_to_localizer3" args="-1.64535 0.0167768  -0.82144  0.00664242 -0.00782122  -0.0134146 /hesai210 /hesai212 10"/>
+
+<node pkg="tf" type="static_transform_publisher" name="base_link_to_hesai210" args="0 -7.27  0  0  0  0 /base_link /hesai210 10"/>
+
+<node pkg="tf" type="static_transform_publisher" name="base_link_to_radar" args="0 -0.28  -1  0  0  0 /hesai210 /radar 10"/>
+
+
+</launch>
