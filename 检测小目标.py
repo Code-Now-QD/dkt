@@ -12,8 +12,6 @@ def area(x1, x2, y1, y2):
     :return: 返回矩形框宽和高
     """
     # 计算矩形框宽度和高度
-    cx1 = (x1 + x2) / 2
-    cy1 = (y1 + y2) / 2
     width1 = x2 - x1
     height1 = y2 - y1
     return width1, height1
@@ -21,7 +19,7 @@ def area(x1, x2, y1, y2):
 
 # 需要检测的文件
 # json_in = input("需要检测的文件：")
-json_in = "/home/dkt/ultralytics/data/1204-1220_new_2d/小目标测试数据"
+json_in = "/home/dkt/ultralytics/data/1data_set/11_02/11_16_Q"
 # 获取形状列表
 for item in sorted(os.listdir(json_in)):
     json_file: str = os.path.join(json_in, item)  # 文件的绝对路径
@@ -45,4 +43,5 @@ for item in sorted(os.listdir(json_in)):
             # 传入当前形状和下个形状的坐标点，并返回给width
             width, height = area(points1x, points2x, points1y, points2y)
             box = width * height
-            print(box)
+            if box < 3000:
+                print(f"{item}\t  {box:.2f}")
