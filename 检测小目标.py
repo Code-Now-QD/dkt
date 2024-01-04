@@ -45,4 +45,4 @@ for item in sorted(os.listdir(json_in)):
             # 传入当前形状和下个形状的坐标点，并返回给width
             width, height = area(points1x, points2x, points1y, points2y)
             box = width * height
-            print(box)
+            print(item, box)

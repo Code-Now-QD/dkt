@@ -1,6 +1,5 @@
-/home/dkt/script/annotation/script.py
-操作逻辑优化如下
+script.py 操作逻辑优化如下:
+把属于同一块的功能放在同级位置；
 1.json
     1.删除图片信息 
     2.更改图片路径
-优点：属于同一功能块的集中起来了，不在七零八碎；
