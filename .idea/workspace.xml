@@ -7,11 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f7dee3c-dbad-4144-b915-06ad139f2a26" name="更改" comment="日常更新">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/script/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/检测小目标.py" beforeDir="false" afterPath="$PROJECT_DIR$/检测小目标.py" afterDir="false" />
-    </list>
+    <list default="true" id="2f7dee3c-dbad-4144-b915-06ad139f2a26" name="更改" comment="日常更新" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
