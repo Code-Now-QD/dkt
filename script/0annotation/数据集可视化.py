@@ -1,5 +1,7 @@
 import os
-from typing import List
+"""
+可优化项：把统计数量的字典也改成列表类型，让表和统计共用一个数据源；  -- 下面pie预期的类型有些特殊
+"""
 from pyecharts import options as opts
 from pyecharts.charts import Bar, Pie
 from pyecharts.options import TitleOpts
@@ -17,6 +19,11 @@ data_key: dict[str, int] = {
     "road": 0,              # 路面
     "bicyclerider": 0,      # 骑行的人
     "trafficlight": 0,      # 交通告示灯
+    "roadblocks": 0,        # 路障
+    "tricycle": 0,          # 三轮车
+    "motorcycle": 0,        # 电/摩（仅车）
+    "bus": 0,               # 巴士
+    "signs": 0              # 告示牌
     }
 
 json_in: str = "/home/dkt/ultralytics/data/1204-1220_new_2d/labels"  # 要统计的数据集      ***
@@ -30,15 +37,16 @@ for i in file_list:
             data_key[keyword] += file_str.count(keyword)
 
 print(
-    f"总标签数量：{data_key['label']}     人：{data_key['person']}  骑行的人:{data_key['bicyclerider']}    "
-    f"两轮自行车：{data_key['bicycle']}   轿车：{data_key['car']}   交通告示灯:{data_key['trafficlight']}"
-    f"卡车：{data_key['truck']}    挖掘机：{data_key['excavator']}    推土机：{data_key['bulldozer']}   "
-    f" 坑洞：{data_key['pothole']}    路面：{data_key['road']} \n")
+    f"总标签数量：{data_key['label']}\n\t人：{data_key['person']}\n\t骑行的人:{data_key['bicyclerider']}\n\t"
+    f"电/摩(仅车):{data_key['motorcycle']}\n\t三轮车:{data_key['tricycle']}\n\t巴士:{data_key['bus']}\n\t"
+    f"自行车(仅车)：{data_key['bicycle']}\n\t轿车：{data_key['car']}\n\t交通告示灯:{data_key['trafficlight']}\n\t"
+    f"卡车：{data_key['truck']}\n\t挖掘机：{data_key['excavator']}\n\t推土机：{data_key['bulldozer']}\n\t"
+    f"坑洞：{data_key['pothole']}\n\t路面：{data_key['road']}\n\t路障:{data_key['roadblocks']}\n\t告示牌:{data_key['signs']}\n")
 
 # 因为下面的pie方法预期类型是list，不接收字典，所以用不了上面的字典数据；
 data = [
     ["人", data_key['person']],
-    ["两轮车", data_key['bicycle']],
+    ["自行车(仅车)", data_key['bicycle']],
     ["轿车", data_key['car']],
     ["卡车", data_key['truck']],
     ["挖掘机", data_key['excavator']],
@@ -46,7 +54,12 @@ data = [
     ["坑洞", data_key['pothole']],
     ["路面", data_key['road']],
     ["骑行的人", data_key['bicyclerider']],
-    ["交通告示灯", data_key['trafficlight']]
+    ["电/摩(仅车)", data_key['motorcycle']],
+    ["交通告示灯", data_key['trafficlight']],
+    ["大巴", data_key['bus']],
+    ["告示牌", data_key['signs']],
+    ["三轮车", data_key['tricycle']],
+    ["路障", data_key['roadblocks']]
 ]
 
 user_input = int(input("1生成饼状图，2生成柱状图\n"))
@@ -57,8 +70,6 @@ if user_input == 1:
     pie.add("", data)
     # noinspection PyTypeChecker
     pie.set_global_opts(title_opts=opts.TitleOpts(title=data_key["label"]))
-    print(type(data_key["label"]))
-    print(data_key["label"])
     pie.set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c}"))
     pie.render("/home/dkt/饼状图.html")
 elif user_input == 2:
@@ -66,7 +77,8 @@ elif user_input == 2:
     data = list(data_key.values())  # 获取数据
 
     bar = Bar()
-    bar.add_xaxis(["总标签", "人", "两轮车", "轿车", "卡车", "挖掘机", "推土机", "坑洞", "路面"])
+    bar.add_xaxis(["总标签", "人", "两轮车", "轿车", "卡车", "挖掘机", "推土机", "坑洞", "路面", "电/摩(仅车)", "自行车(仅车)",
+                   "大巴", "告示牌", "三轮车", "交通告示灯", "路障"])
     bar.add_yaxis("labels", data)
     bar.set_global_opts(
         title_opts=TitleOpts(title="11月16日数据集类别分布情况", pos_left='center', pos_bottom='1%')

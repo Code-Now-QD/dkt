@@ -21,7 +21,7 @@ def area(x1, x2, y1, y2):
 
 # 需要检测的文件
 # json_in = input("需要检测的文件：")
-json_in = "/home/dkt/ultralytics/data/1204-1220_new_2d/小目标测试数据"
+json_in = "/home/dkt/ultralytics/data/1204-1220_new_2d/labels"
 # 获取形状列表
 for item in sorted(os.listdir(json_in)):
     json_file: str = os.path.join(json_in, item)  # 文件的绝对路径
